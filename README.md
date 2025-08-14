@@ -34,9 +34,6 @@ API:
 Database:
 - SQL
 
-Machine Learning Models:
--
-
 ## Setup/Run
 To setup the program, run the following commands: 
 ```bash
