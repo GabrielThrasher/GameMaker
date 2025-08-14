@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+{% block title %}How to Use - Game Maker{% endblock %}
+
+{% block content %}
+  <div class="how_to_use-content" style="padding: 2em; max-width: 800px; margin: auto; font-family: 'Montserrat', sans-serif;">
+    <h1>How to Use Game Maker</h1>
+    <br>
+    <br> 
+    <p>
+      Game Maker uses machine learning and statistical analysis to predict the winning team and highlight the most impactful players in upcoming games.
+      Whether you’re a fan, analyst, or fantasy league player, our platform helps you make smarter predictions and better understand the game.
+    </p>
+    <br>
+    <h2> Predictions </h2>
+    <br>
+    <p>
+      Visit the Predict page, select your dates, choose your games, and get predictions powered by machine learning!
+      First you have to select your dates. In the top left there are two fields 'Start Date' and 'End Date', here you can input the dates which you want to query.
+      Once you've selected your dates then click 'RETRIEVE' to view the games. Shown will be all matchups within the date range you selected, along with each team's win-loss.
+      You can also select either the NBA or NCAA if you want to view games from different leagues.
+    </p>
+    <br>
+    <p>
+      Now select which games you want to predict on using the checkbox in the leftmost column of the tables. When you've selected all the desired games click predict to see the model's outputs.
+      Returned will be the model's prediction along with the actual winner of the game. When predicting you can choose either 'NO SIMULATION' or 'SIMULATION'.
+      Choosing 'NO SIMULATION' sends the game to our model to be predicted on. If you choose 'SIMULATION' we will run 1000 simulated games for each selected row. 
+      When simulating we will add some random variation to the input data, allowing us to account for the randomness of the real world.
+      For example, a team may have an off day and perform more poorly than they would usually. By simulating this over so many games we can take this randomness into account (See our methodology page for more information!).
+    </p>
+    
+
+    <!-- rmbr to change this later -->
+    <div style="margin: 2em 0;">
+      <img src="{{ url_for('static', filename='images/prediction_page.png') }}" alt="Prediction Example" style="width: 100%; max-width: 700px; border: 1px solid #ccc; border-radius: 8px;">
+    </div>
+
+    <p>
+      Now that you have a sense of who would win, drag and drop teams into the parlay box on the bottom right! Once you've selected each leg of your parlay click 'SIMULATE' to see the optimal parlay based on these teams.
+      If you want to view a different combination just click clear and drag in new teams.
+    </p>
+    
+    <br><br>
+    <h2> Matchups </h2>
+    <br>
+    <p>Visit the Matchups page, select your date, choose your teams, and get predictions powered by machine learning!
+      First you have to select your date. In the 'Select Date' field, input the dates which you want to query. Then, drag and drop your two chosen teams to the basketball court.
+      Once you've selected your dates then click 'RETRIEVE' to view the games. Shown will be all matchups between the two teams on and after the date you selected, along with each team's win-loss.
+      Now, click the 'PREDICT' button to see the model's outputs.</p>
+    
+    <a href="{{ url_for('predict') }}" 
+       style="
+         display: inline-block;
+         background-color: #1D428A; /* NBA blue */
+         color: white;
+         padding: 14px 32px;
+         font-weight: 600;
+         font-family: 'Montserrat', sans-serif;
+         font-size: 1.2em;
+         text-transform: uppercase;
+         border: none;
+         border-radius: 0;
+         cursor: pointer;
+         text-decoration: none;
+         margin-top: 1.5em;
+       ">
+      Start Predicting
+    </a>
+    <br>
+
+  </div>
+{% endblock %}

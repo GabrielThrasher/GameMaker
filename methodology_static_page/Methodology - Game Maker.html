@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://127.0.0.1:5000/methodology -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Methodology - Game Maker</title>
+
+
+  <link href="./Methodology - Game Maker_files/css2" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="./Methodology - Game Maker_files/style.css">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async="" src="./Methodology - Game Maker_files/tex-mml-chtml.js.download">
+  </script>
+
+  
+  
+<style>
+  .styled-table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    font-family: 'Montserrat', 'sans-serif';
+    font-size: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .styled-table thead {
+    background-color: #333;
+    color: white;
+  }
+
+  .styled-table th, .styled-table td {
+    padding: 12px 20px;
+    text-align: center;
+    border: 1px solid #ccc;
+  }
+
+  .styled-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+
+   #table-of-contents {
+   padding: 20px;
+   border-radius: 12px;
+   font-family: 'Montserrat', 'sans-serif';
+ }
+
+ #table-of-contents h1 {
+   font-size: 28px;
+   margin-bottom: 10px;
+   border-bottom: 2px solid black;
+   padding-bottom: 5px;
+ }
+
+ .toc {
+   list-style: none;
+   padding-left: 20px;
+ }
+
+ .toc li {
+   margin: 8px 0;
+ }
+
+ .toc > li > a {
+   font-weight: bold;
+   font-size: 18px;
+   color: #1D428A;
+   text-decoration: none;
+   transition: color 0.2s ease;
+ }
+
+ .toc li a:hover {
+   color: #005fa3;
+   text-decoration: underline;
+ }
+
+ .toc ul {
+   list-style-type: disc;
+   margin-left: 20px;
+   font-size: 16px;
+ }
+
+ #table-of-contents {
+  width: 100%;
+ }
+</style>
+
+<style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style><style id="MJX-CHTML-styles">
+mjx-container[jax="CHTML"] {
+  line-height: 0;
+}
+
+mjx-container [space="1"] {
+  margin-left: .111em;
+}
+
+mjx-container [space="2"] {
+  margin-left: .167em;
+}
+
+mjx-container [space="3"] {
+  margin-left: .222em;
+}
+
+mjx-container [space="4"] {
+  margin-left: .278em;
+}
+
+mjx-container [space="5"] {
+  margin-left: .333em;
+}
+
+mjx-container [rspace="1"] {
+  margin-right: .111em;
+}
+
+mjx-container [rspace="2"] {
+  margin-right: .167em;
+}
+
+mjx-container [rspace="3"] {
+  margin-right: .222em;
+}
+
+mjx-container [rspace="4"] {
+  margin-right: .278em;
+}
+
+mjx-container [rspace="5"] {
+  margin-right: .333em;
+}
+
+mjx-container [size="s"] {
+  font-size: 70.7%;
+}
+
+mjx-container [size="ss"] {
+  font-size: 50%;
+}
+
+mjx-container [size="Tn"] {
+  font-size: 60%;
+}
+
+mjx-container [size="sm"] {
+  font-size: 85%;
+}
+
+mjx-container [size="lg"] {
+  font-size: 120%;
+}
+
+mjx-container [size="Lg"] {
+  font-size: 144%;
+}
+
+mjx-container [size="LG"] {
+  font-size: 173%;
+}
+
+mjx-container [size="hg"] {
+  font-size: 207%;
+}
+
+mjx-container [size="HG"] {
+  font-size: 249%;
+}
+
+mjx-container [width="full"] {
+  width: 100%;
+}
+
+mjx-box {
+  display: inline-block;
+}
+
+mjx-block {
+  display: block;
+}
+
+mjx-itable {
+  display: inline-table;
+}
+
+mjx-row {
+  display: table-row;
+}
+
+mjx-row > * {
+  display: table-cell;
+}
+
+mjx-mtext {
+  display: inline-block;
+}
+
+mjx-mstyle {
+  display: inline-block;
+}
+
+mjx-merror {
+  display: inline-block;
+  color: red;
+  background-color: yellow;
+}
+
+mjx-mphantom {
+  visibility: hidden;
+}
+
+_::-webkit-full-page-media, _:future, :root mjx-container {
+  will-change: opacity;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-math {
+  display: inline-block;
+  text-align: left;
+  line-height: 0;
+  text-indent: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100%;
+  font-size-adjust: none;
+  letter-spacing: normal;
+  border-collapse: collapse;
+  word-wrap: normal;
+  word-spacing: normal;
+  white-space: nowrap;
+  direction: ltr;
+  padding: 1px 0;
+}
+
+mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="CHTML"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="CHTML"][display="true"] mjx-math {
+  padding: 0;
+}
+
+mjx-container[jax="CHTML"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="CHTML"][justify="right"] {
+  text-align: right;
+}
+
+mjx-mi {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-c {
+  display: inline-block;
+}
+
+mjx-utext {
+  display: inline-block;
+  padding: .75em 0 .2em 0;
+}
+
+mjx-mo {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-stretchy-h {
+  display: inline-table;
+  width: 100%;
+}
+
+mjx-stretchy-h > * {
+  display: table-cell;
+  width: 0;
+}
+
+mjx-stretchy-h > * > mjx-c {
+  display: inline-block;
+  transform: scalex(1.0000001);
+}
+
+mjx-stretchy-h > * > mjx-c::before {
+  display: inline-block;
+  width: initial;
+}
+
+mjx-stretchy-h > mjx-ext {
+  /* IE */ overflow: hidden;
+  /* others */ overflow: clip visible;
+  width: 100%;
+}
+
+mjx-stretchy-h > mjx-ext > mjx-c::before {
+  transform: scalex(500);
+}
+
+mjx-stretchy-h > mjx-ext > mjx-c {
+  width: 0;
+}
+
+mjx-stretchy-h > mjx-beg > mjx-c {
+  margin-right: -.1em;
+}
+
+mjx-stretchy-h > mjx-end > mjx-c {
+  margin-left: -.1em;
+}
+
+mjx-stretchy-v {
+  display: inline-block;
+}
+
+mjx-stretchy-v > * {
+  display: block;
+}
+
+mjx-stretchy-v > mjx-beg {
+  height: 0;
+}
+
+mjx-stretchy-v > mjx-end > mjx-c {
+  display: block;
+}
+
+mjx-stretchy-v > * > mjx-c {
+  transform: scaley(1.0000001);
+  transform-origin: left center;
+  overflow: hidden;
+}
+
+mjx-stretchy-v > mjx-ext {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+  border: 0px solid transparent;
+  /* IE */ overflow: hidden;
+  /* others */ overflow: visible clip;
+}
+
+mjx-stretchy-v > mjx-ext > mjx-c::before {
+  width: initial;
+  box-sizing: border-box;
+}
+
+mjx-stretchy-v > mjx-ext > mjx-c {
+  transform: scaleY(500) translateY(.075em);
+  overflow: visible;
+}
+
+mjx-mark {
+  display: inline-block;
+  height: 0px;
+}
+
+mjx-mfrac {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-frac {
+  display: inline-block;
+  vertical-align: 0.17em;
+  padding: 0 .22em;
+}
+
+mjx-frac[type="d"] {
+  vertical-align: .04em;
+}
+
+mjx-frac[delims] {
+  padding: 0 .1em;
+}
+
+mjx-frac[atop] {
+  padding: 0 .12em;
+}
+
+mjx-frac[atop][delims] {
+  padding: 0;
+}
+
+mjx-dtable {
+  display: inline-table;
+  width: 100%;
+}
+
+mjx-dtable > * {
+  font-size: 2000%;
+}
+
+mjx-dbox {
+  display: block;
+  font-size: 5%;
+}
+
+mjx-num {
+  display: block;
+  text-align: center;
+}
+
+mjx-den {
+  display: block;
+  text-align: center;
+}
+
+mjx-mfrac[bevelled] > mjx-num {
+  display: inline-block;
+}
+
+mjx-mfrac[bevelled] > mjx-den {
+  display: inline-block;
+}
+
+mjx-den[align="right"], mjx-num[align="right"] {
+  text-align: right;
+}
+
+mjx-den[align="left"], mjx-num[align="left"] {
+  text-align: left;
+}
+
+mjx-nstrut {
+  display: inline-block;
+  height: .054em;
+  width: 0;
+  vertical-align: -.054em;
+}
+
+mjx-nstrut[type="d"] {
+  height: .217em;
+  vertical-align: -.217em;
+}
+
+mjx-dstrut {
+  display: inline-block;
+  height: .505em;
+  width: 0;
+}
+
+mjx-dstrut[type="d"] {
+  height: .726em;
+}
+
+mjx-line {
+  display: block;
+  box-sizing: border-box;
+  min-height: 1px;
+  height: .06em;
+  border-top: .06em solid;
+  margin: .06em -.1em;
+  overflow: hidden;
+}
+
+mjx-line[type="d"] {
+  margin: .18em -.1em;
+}
+
+mjx-mrow {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-c::before {
+  display: block;
+  width: 0;
+}
+
+.MJX-TEX {
+  font-family: MJXZERO, MJXTEX;
+}
+
+.TEX-B {
+  font-family: MJXZERO, MJXTEX-B;
+}
+
+.TEX-I {
+  font-family: MJXZERO, MJXTEX-I;
+}
+
+.TEX-MI {
+  font-family: MJXZERO, MJXTEX-MI;
+}
+
+.TEX-BI {
+  font-family: MJXZERO, MJXTEX-BI;
+}
+
+.TEX-S1 {
+  font-family: MJXZERO, MJXTEX-S1;
+}
+
+.TEX-S2 {
+  font-family: MJXZERO, MJXTEX-S2;
+}
+
+.TEX-S3 {
+  font-family: MJXZERO, MJXTEX-S3;
+}
+
+.TEX-S4 {
+  font-family: MJXZERO, MJXTEX-S4;
+}
+
+.TEX-A {
+  font-family: MJXZERO, MJXTEX-A;
+}
+
+.TEX-C {
+  font-family: MJXZERO, MJXTEX-C;
+}
+
+.TEX-CB {
+  font-family: MJXZERO, MJXTEX-CB;
+}
+
+.TEX-FR {
+  font-family: MJXZERO, MJXTEX-FR;
+}
+
+.TEX-FRB {
+  font-family: MJXZERO, MJXTEX-FRB;
+}
+
+.TEX-SS {
+  font-family: MJXZERO, MJXTEX-SS;
+}
+
+.TEX-SSB {
+  font-family: MJXZERO, MJXTEX-SSB;
+}
+
+.TEX-SSI {
+  font-family: MJXZERO, MJXTEX-SSI;
+}
+
+.TEX-SC {
+  font-family: MJXZERO, MJXTEX-SC;
+}
+
+.TEX-T {
+  font-family: MJXZERO, MJXTEX-T;
+}
+
+.TEX-V {
+  font-family: MJXZERO, MJXTEX-V;
+}
+
+.TEX-VB {
+  font-family: MJXZERO, MJXTEX-VB;
+}
+
+mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
+  font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
+}
+
+@font-face /* 0 */ {
+  font-family: MJXZERO;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+}
+
+@font-face /* 1 */ {
+  font-family: MJXTEX;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+}
+
+@font-face /* 2 */ {
+  font-family: MJXTEX-B;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+}
+
+@font-face /* 3 */ {
+  font-family: MJXTEX-I;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+}
+
+@font-face /* 4 */ {
+  font-family: MJXTEX-MI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+}
+
+@font-face /* 5 */ {
+  font-family: MJXTEX-BI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+}
+
+@font-face /* 6 */ {
+  font-family: MJXTEX-S1;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+}
+
+@font-face /* 7 */ {
+  font-family: MJXTEX-S2;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+}
+
+@font-face /* 8 */ {
+  font-family: MJXTEX-S3;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+}
+
+@font-face /* 9 */ {
+  font-family: MJXTEX-S4;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+}
+
+@font-face /* 10 */ {
+  font-family: MJXTEX-A;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+}
+
+@font-face /* 11 */ {
+  font-family: MJXTEX-C;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+}
+
+@font-face /* 12 */ {
+  font-family: MJXTEX-CB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+}
+
+@font-face /* 13 */ {
+  font-family: MJXTEX-FR;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+}
+
+@font-face /* 14 */ {
+  font-family: MJXTEX-FRB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+}
+
+@font-face /* 15 */ {
+  font-family: MJXTEX-SS;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+}
+
+@font-face /* 16 */ {
+  font-family: MJXTEX-SSB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+}
+
+@font-face /* 17 */ {
+  font-family: MJXTEX-SSI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+}
+
+@font-face /* 18 */ {
+  font-family: MJXTEX-SC;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+}
+
+@font-face /* 19 */ {
+  font-family: MJXTEX-T;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+}
+
+@font-face /* 20 */ {
+  font-family: MJXTEX-V;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+}
+
+@font-face /* 21 */ {
+  font-family: MJXTEX-VB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+}
+
+mjx-c.mjx-c1D434.TEX-I::before {
+  padding: 0.716em 0.75em 0 0;
+  content: "A";
+}
+
+mjx-c.mjx-c1D450.TEX-I::before {
+  padding: 0.442em 0.433em 0.011em 0;
+  content: "c";
+}
+
+mjx-c.mjx-c1D462.TEX-I::before {
+  padding: 0.442em 0.572em 0.011em 0;
+  content: "u";
+}
+
+mjx-c.mjx-c1D45F.TEX-I::before {
+  padding: 0.442em 0.451em 0.011em 0;
+  content: "r";
+}
+
+mjx-c.mjx-c1D44E.TEX-I::before {
+  padding: 0.441em 0.529em 0.01em 0;
+  content: "a";
+}
+
+mjx-c.mjx-c1D466.TEX-I::before {
+  padding: 0.442em 0.49em 0.205em 0;
+  content: "y";
+}
+
+mjx-c.mjx-c3D::before {
+  padding: 0.583em 0.778em 0.082em 0;
+  content: "=";
+}
+
+mjx-c.mjx-c1D436.TEX-I::before {
+  padding: 0.705em 0.76em 0.022em 0;
+  content: "C";
+}
+
+mjx-c.mjx-c1D45C.TEX-I::before {
+  padding: 0.441em 0.485em 0.011em 0;
+  content: "o";
+}
+
+mjx-c.mjx-c1D452.TEX-I::before {
+  padding: 0.442em 0.466em 0.011em 0;
+  content: "e";
+}
+
+mjx-c.mjx-c1D461.TEX-I::before {
+  padding: 0.626em 0.361em 0.011em 0;
+  content: "t";
+}
+
+mjx-c.mjx-c1D43B.TEX-I::before {
+  padding: 0.683em 0.888em 0 0;
+  content: "H";
+}
+
+mjx-c.mjx-c1D45A.TEX-I::before {
+  padding: 0.442em 0.878em 0.011em 0;
+  content: "m";
+}
+
+mjx-c.mjx-c1D44A.TEX-I::before {
+  padding: 0.683em 1.048em 0.022em 0;
+  content: "W";
+}
+
+mjx-c.mjx-c1D456.TEX-I::before {
+  padding: 0.661em 0.345em 0.011em 0;
+  content: "i";
+}
+
+mjx-c.mjx-c1D45B.TEX-I::before {
+  padding: 0.442em 0.6em 0.011em 0;
+  content: "n";
+}
+
+mjx-c.mjx-c1D443.TEX-I::before {
+  padding: 0.683em 0.751em 0 0;
+  content: "P";
+}
+
+mjx-c.mjx-c1D451.TEX-I::before {
+  padding: 0.694em 0.52em 0.01em 0;
+  content: "d";
+}
+
+mjx-c.mjx-c1D460.TEX-I::before {
+  padding: 0.442em 0.469em 0.01em 0;
+  content: "s";
+}
+
+mjx-c.mjx-c1D447.TEX-I::before {
+  padding: 0.677em 0.704em 0 0;
+  content: "T";
+}
+
+mjx-c.mjx-c1D459.TEX-I::before {
+  padding: 0.694em 0.298em 0.011em 0;
+  content: "l";
+}
+
+mjx-c.mjx-c1D440.TEX-I::before {
+  padding: 0.683em 1.051em 0 0;
+  content: "M";
+}
+</style></head>
+<body>
+  <nav>
+    <ul>
+    <li><a href="http://127.0.0.1:5000/">Home</a></li>
+    <li><a href="http://127.0.0.1:5000/how_to_use">How to Use</a></li>
+    <li><a href="http://127.0.0.1:5000/predict">Prediction</a></li>
+    <li><a href="http://127.0.0.1:5000/matchups">Matchups</a></li>
+    <li><a href="http://127.0.0.1:5000/stats">Stats</a></li>
+    <li><a href="http://127.0.0.1:5000/methodology">Methodology</a></li>
+    <li><a href="http://127.0.0.1:5000/glossary">Glossary</a></li>
+    
+    </ul>
+  </nav>
+
+  <main>
+    
+  <div class="methodology-content" style="max-width: 800px; margin: auto; font-family: &#39;Montserrat&#39;, sans-serif;">
+     <div id="table-of-contents">
+       <h1>Table of Contents</h1>
+       <ul class="toc">
+         <li>
+           <a href="http://127.0.0.1:5000/methodology#nba_model">NBA Model</a>
+           <ul>
+             <li><a href="http://127.0.0.1:5000/methodology#nba_methodology">Methodology</a></li>
+             <li><a href="http://127.0.0.1:5000/methodology#nba_results">Results &amp; Discussion</a></li>
+           </ul>
+         </li>
+         <li>
+           <a href="http://127.0.0.1:5000/methodology#ncaa_model">NCAA Model</a>
+           <ul>
+             <li><a href="http://127.0.0.1:5000/methodology#ncaa_methodology">Methodology</a></li>
+             <li><a href="http://127.0.0.1:5000/methodology#ncaa_results">Results &amp; Discussion</a></li>
+           </ul>
+         </li>
+         <li><a href="http://127.0.0.1:5000/methodology#simulation">Simulation Version of Models</a></li>
+         <li>
+           <a href="http://127.0.0.1:5000/methodology#appendix">Appendix</a>
+           <ul>
+             <li><a href="http://127.0.0.1:5000/methodology#nba_appendix">NBA Model</a></li>
+             <li><a href="http://127.0.0.1:5000/methodology#ncaa_appendix">NCAA Model</a></li>
+           </ul>
+         </li>
+       </ul>
+     </div>
+
+    <h1 id="nba_model">NBA Model</h1>
+   <br>
+    <h2 id="nba_methodology">Methodology</h2>
+    <p>
+    To enable backtesting across a whole season, we restricted our training data to the 2023–24 NBA season. Due to this constraint and the relatively limited volume of game data available via the NBA API – insufficient for effectively training a neural network at least – we chose not to use a time-series-based deep learning approach. Instead, we implemented a structured, fold-based machine learning pipeline centered around a stacked ensemble model for binary classification. This ensemble method leverages the strengths of multiple base models by passing the output of one as input to the next, allowing each model to correct errors made by its predecessor.
+    </p>
+   <br>
+   <p>
+    Out of the original 20 basketball statistics (explained in detail on the glossary page), five were redundant because they directly contributed to the calculation of others—either as numerators, denominators in percentage metrics (e.g., FGA and FGM are included in FG_PCT), or as components summed to form aggregate stats. However, we found, for performance reasons, it was best to remove only one out of the aforementioned five statistics – REB. Further, To better structure our features for ensemble learning, we engineered four time-aware statistics – AVG, MAX, BIAS, and MOM – for each of the 19 core basketball statistics. These were computed per game instance in the dataset as follows:
+   </p>
+    <br>
+    <ul style="padding-left: 30px;">
+        <li>AVG: The average value of the stat prior to the game date, excluding the game itself (to preserve prediction integrity).</li>
+        <li>MAX: The maximum value observed for that stat before the game date.</li>
+        <li>BIAS and MOM: Derived from a simple least squares linear regression fit to the stat's historical values – BIAS represents the intercept (a baseline), and MOM (momentum) represents the slope (the trend). These were included to capture directional trends over time.</li>
+    </ul>
+    <br>
+    <p>After generating these features, the remaining original 19 raw stats were dropped, leaving us with 76 engineered features per team per game instance. Since basketball game outcomes are inherently relative rather than absolute, we appended the opposing team's 76 features (feature names appended with _OPP indicate values corresponding to the opposing team) to the same row, always listing the home team's features first. This transformation halved the number of examples but significantly improved their informational quality, resulting in 152 features per instance. The data instances were chronologically ordered, with the earliest game appearing first in the dataset. This ensured temporal integrity and prevented data leakage from future information influencing past predictions.
+</p>
+    <br>
+    <p>This constituted our input feature dataset X. The corresponding label vector y was a binary indicator: 1 if the home team won the game, 0 otherwise. The original dataset used to construct the input matrix X and target vector y is available for download via the Glossary pageThe overall workflow consisted of:</p>
+    <br>
+   <ul style="padding-left: 30px;">
+    <li>Data preprocessing (described above),</li>
+    <li>Feature engineering and selection (guided by correlation analysis),</li>
+    <li>Model training via ensemble methods with threshold optimization to calibrate predicted probabilities,</li>
+    <li>Testing and analysis of results.
+    </li>
+   </ul>
+    <br><p>A detailed breakdown of the fold-level training and evaluation process follows below.</p><br>
+    <h3>Data Partitioning</h3>
+    <p>For each fold, the dataset was split into training and testing sets using predefined indices (train_index and test_index). For each successive fold, the size of the training set increased incrementally – starting with the earliest game instances and progressing chronologically. This setup simulated training on distinct datasets per fold and helped improve the ensemble model’s robustness against overfitting by exposing it to varying temporal patterns across folds. The training set was further divided into a training and validation set using an 80/20 split, with shuffle=False to preserve any temporal structure present in the data. This partitioning ensured that model validation occurred on unseen data within each fold.
+    </p><br>
+    <h3>Missing Value Imputation</h3>
+    <p>We computed the mean of each feature in the training set and imputed missing values in the training, validation, and test sets using these means. This approach avoided data leakage by preventing the validation or test sets from influencing the imputation process.</p>
+    <br>
+    <h3>Feature Scaling</h3>
+    <p>All features were standardized using StandardScaler, which centers and scales features to have zero mean and unit variance. The scaler was fitted exclusively on the training data and then applied to the validation and test sets to ensure consistency and avoid leakage.</p>
+    <br>
+    <h3>Feature Selection via Correlation Analysis</h3>
+    <p>To reduce multicollinearity and improve model generalization, we calculated the pairwise Pearson correlation matrix of the scaled training features. Features with absolute correlation values exceeding a threshold magnitude of 0.7 were dropped. This was done prior to model training and consistently applied to the validation and test sets. </p>
+   <br>
+    <h3>Model Architecture: Stacked Ensemble</h3>
+    <p>We implemented a stacked ensemble classifier using the following base learners:
+    <br></p><ul style="padding-left: 30px;">
+       <br> <li>Random Forest Classifier: robust, non-parametric models that perform well on structured tabular data. They reduce overfitting through bootstrap aggregation (bagging) and capture complex feature interactions without extensive preprocessing. We included it for its strong baseline performance and its ability to handle noisy, high-dimensional data effectively.</li>
+       <br> <li>XGBoost Classifier: a high-performance gradient boosting algorithm known for its accuracy and efficiency. It handles missing data internally and is well-suited for tabular, imbalanced, or sparse datasets. Using log-loss as the evaluation metric allows it to optimize directly for probabilistic outputs, which is beneficial when calibrating thresholds or combining models in an ensemble.</li>
+       <br> <li>Support Vector Classifier (SVC): effective in high-dimensional spaces and can model non-linear decision boundaries through kernel tricks. By enabling probability estimates, the SVC contributes calibrated predictions that complement the outputs of tree-based models. Its inclusion enhances the ensemble’s diversity, particularly when separating data that is not linearly separable.</li>
+       <br> <li>k-Nearest Neighbors (kNN) Classifier: kNN is a simple yet powerful instance-based learner that makes predictions based on local proximity in feature space. While sensitive to feature scaling and noisy data, its fundamentally different approach – non-parametric and lazy – adds a contrasting inductive bias to the ensemble. It can capture local structure that other global learners may miss.</li>
+    </ul>
+<br>
+    A logistic regression model served as the final meta-learner. Its role was to learn optimal weights for combining the base learners' probabilistic outputs into a final prediction. The stacking classifier used passthrough=True to retain original features alongside base learner outputs and was trained using 2-fold cross-validation within the training set to optimize internal base model performance.
+    <p></p>
+    <br>
+    <h3>Threshold Tuning</h3>
+    <p>To convert predicted probabilities into binary class labels, we calibrated the decision threshold (predictions were assigned a value of 1 if the predicted probability met or exceeded the threshold; otherwise, the prediction was 0) using the validation set. We evaluated thresholds in the range [0.30, 0.69] with a step size of 0.01 and selected the classification threshold that maximized the balanced accuracy score, which accounts for potential class imbalance. This approach allowed us to favor higher recall – crucial in the context of sports betting, where minimizing false negatives (i.e., missing potential wins) is often more valuable than maximizing precision.</p>
+<br>
+    <h3>Model Persistence</h3>
+    <p>All relevant fold-specific artifacts, including feature metadata, preprocessing parameters (mean values, scaler), dropped features, the trained stacking model, and the optimal classification threshold, were saved using joblib for reproducibility and downstream inference.</p>
+    <br>
+    <h3>Model Predictions</h3>
+    <p>To generate predictions, each data instance was passed through all ten folds of the ensemble pipeline, producing one prediction per fold. The final prediction for a given game was determined by taking the mode of these ten outputs. In the event of a tie (e.g., five predictions of 0 and five of 1), the final prediction defaulted to 0, as per the behavior of scipy.stats.mode, which returns the smallest value in the case of a tie.</p>
+    <br>
+    <h2 id="nba_results">Results &amp; Discussion</h2>
+    <p>
+     Here, we analyze and break down the results from a single fold – specifically, fold 1 – and present the averages across all folds for each metric. Furthermore, we include backtesting results for the 2024–25 NBA season. Additional images for your review and analysis are provided in the appendix below.
+     </p>
+     <br>
+     <p>
+      Below is the correlation matrix for the features in fold 1’s dataset before feature selection. With 152 features, the matrix is dense and can be challenging to interpret in detail. The key insight lies in the overall density and distribution of strong correlations, which is visually apparent. To enhance clarity, all correlation values below the 0.7 threshold were set to zero and displayed as white cells, simplifying the visualization and highlighting only the most significant feature relationships.
+     </p>
+        <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Pre-Fold 1.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+   <br>
+        <p>It is evident that most correlations cluster near the diagonal, indicating strong relationships among closely related features – such as DREB_BIAS and DREB_AVG – which is expected. However, this approach also uncovered less obvious correlations (the ones not near the diagonal), such as between PTS_BIAS_OPP and FG3_PCT_MOM_OPP, highlighting interactions that might otherwise have been overlooked.
+        </p>
+        <br>
+    <p>After removing all redundant features, 53 remain. This reduction is reflected visually in the much sparser correlation matrix below. Notice that aside from the trivial diagonal (highlighted in red), which represents the perfect self-correlation of each feature, no correlations exceed the 0.7 threshold (indicated by blue). This confirms the effective elimination of highly correlated, redundant features.</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Post-Fold 1.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br><p>By retaining only about 35% of the original features, we significantly reduce training and prediction times while maintaining most of the model’s predictive power.
+        Additionally, the confusion matrix for fold 1 is presented below:
+        </p>
+    <br>
+    <img src="./Methodology - Game Maker_files/fold_1_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>As shown, there are 89 true positives – cases where the model correctly predicted a win (1) and the game outcome was indeed a win – along with 30 true negatives, 58 false positives, and 9 false negatives. From this confusion matrix, fold 1’s recall is 0.91, precision 0.61, F1 score 0.73, and accuracy 63.98%. While these results appear promising, they should be interpreted with caution since fold 1 was evaluated on a relatively small test set, making the metrics susceptible to volatility. This limitation motivated backtesting on a larger dataset, such as all games during the previous NBA season, to gain more knowingly stable estimates. Despite this, fold 1’s performance remains a useful indicator of training behavior and results. Across all ten folds, the average metrics were: recall at 0.72, precision 0.64, F1 score 0.67, and accuracy 62.53%, with an average optimal classification threshold of 0.5670 – above the standard threshold of 0.5.</p>
+    <br>
+    <p>As previously noted, we backtested our model using the 2024–25 NBA season games to gain a clearer understanding of its true predictive performance. The corresponding confusion matrix is shown below.
+    </p>
+    <br>
+    <img src="./Methodology - Game Maker_files/2024-25_season_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>
+     As observed, the confusion matrix shows 620 true positives, 515 true negatives, 272 false positives, and 313 false negatives. This corresponds to a recall of 0.66, precision of 0.70, F1 score of 0.68, and accuracy of 65.99% (above the baseline accuracy of around 55% from just always predicting a home team win), which aligns closely with the metrics obtained during training. While our model is not without limitations, the results highlight the fundamental uncertainty and complexity involved in predicting basketball game outcomes within the context of sports betting.
+    </p>
+    <br>
+    <p>Since the data is time series–based, it is reasonable to expect model performance to degrade as the test window moves further from the training period, due to evolving factors such as team roster changes, player aging, and other dynamic contextual variables. Note: following standard convention, if the denominator in the calculation of recall, precision, or F1 score is zero, the corresponding metric — while technically undefined — is set to 0.</p>
+    <img src="./Methodology - Game Maker_files/2024-25_recall_trend_line.png" alt="Recall Trendline" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+
+    <img src="./Methodology - Game Maker_files/2024-25_precision_trend_line.png" alt="Precision Trendline" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+
+    <img src="./Methodology - Game Maker_files/2024-25_f1_trend_line.png" alt="F1 Trendline" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+
+    <img src="./Methodology - Game Maker_files/2024-25_accuracy_trend_line.png" alt="Accuracy Trendline" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+
+    
+    <p>The red trendline in all four graphs exhibits a slight downward trajectory, aligning with our expectation that model performance gradually declines as the temporal distance from the training window increases. Notably, none of the four metrics vary by more than 0.1 over time, with recall demonstrating the least change—successfully achieving our training objective of prioritizing and stabilizing recall performance.</p>
+    <br>
+    <br>
+
+   <h1 id="ncaa_model">NCAA Model</h1>
+   <br>
+    <h2 id="ncaa_methodology">Methodology</h2>
+    <p>
+     The NCAA model was trained on the first 75% of games in the 2024-25 NCAA season. Furthermore, all other parts of the Methodology section are the same as in the NBA case except for “5. Model Architecture: Stacked Ensemble” as the model architecture used for the NCAA model is different than for the NBA model. The NCAA model architecture is described below.
+    </p>
+   <br>
+
+   <p>
+    We implemented a stacked ensemble classifier using the following base learners:
+   </p>
+
+   <ul style="padding-left: 30px;">
+    <br><li>
+     Balanced Random Forest Classifier (BRF): an extension of the standard Random Forest designed to handle imbalanced datasets. It applies bootstrap sampling with class balancing at each tree to ensure minority class representation during training. This makes it especially valuable in binary classification problems where one class is underrepresented, helping to reduce bias and improve recall without sacrificing model robustness.
+    </li>
+    <br><li>
+     XGBoost Classifier (XGB): a scalable gradient boosting framework optimized for both speed and performance. By adjusting scale_pos_weight based on class imbalance and using logloss as the evaluation metric, it produces well-calibrated probabilistic outputs. Its ability to handle sparse, tabular data with missing values makes it a core component of the ensemble’s predictive strength.
+    </li>
+    <br><li>
+     Histogram-Based Gradient Boosting Classifier (HGB):  a fast, regularized variant of gradient boosting that bins continuous features into histograms for efficiency. With built-in support for class_weight='balanced', it directly addresses class imbalance. Its speed and scalability make it a strong choice for large datasets, while its boosting nature brings high predictive power to the ensemble.
+    </li>
+    <br><li>
+     LightGBM Classifier (LGBM): a high-performance gradient boosting implementation optimized for speed and memory efficiency. It grows trees leaf-wise rather than level-wise, which often leads to better accuracy. With class_weight='balanced', it natively accounts for class imbalance, contributing both performance and computational efficiency to the ensemble.
+    </li>
+    <br><li>
+     CatBoost Classifier: is a gradient boosting algorithm particularly effective on categorical features. It handles class imbalance through class_weights and avoids overfitting by using ordered boosting. Its smooth handling of categorical encodings and low sensitivity to hyperparameters make it a reliable, low-maintenance component in the ensemble.
+    </li>
+    <br><li>
+     Logistic Regression: a linear, interpretable model that estimates class probabilities through a sigmoid function. With class_weight='balanced', it compensates for class imbalance and produces calibrated probability scores. Despite its simplicity, its linear inductive bias provides a valuable contrast to non-linear models and strengthens the ensemble’s diversity.
+    </li>
+    <br><li>
+     Support Vector Classifier (SVC): handles high-dimensional data and learns non-linear decision boundaries via kernel methods. Enabling probability estimates allows it to contribute calibrated outputs. Its inclusion offers geometric diversity, particularly useful when class separation is not linearly achievable.
+    </li>
+    <br><li>
+     k-Nearest Neighbors (kNN) Classifier: a non-parametric, instance-based learner that predicts based on the proximity of training points. Though sensitive to scaling and noise, its lazy learning strategy captures local structure in feature space, complementing the global generalization tendencies of other ensemble members.
+    </li>
+    <br><li>
+    Gaussian Naive Bayes (NB): a probabilistic classifier that assumes feature independence and normal distribution. It’s fast, simple, and surprisingly effective in many real-world scenarios. Its unique generative perspective introduces valuable inductive bias to the ensemble and often performs well when data is limited or noisy.
+    </li>
+    <br><li>
+      Easy Ensemble Classifier: a boosting-based meta-learner tailored for imbalanced classification tasks. It builds multiple balanced subsets from the majority class and trains an ensemble of classifiers on each. This method enhances minority class recall while maintaining high overall performance, making it a strategic choice for skewed data distributions.
+    </li>
+   </ul>
+
+   <br>
+   <p>
+   A logistic regression model served as the final meta-learner. Its role was to learn optimal weights for combining the base learners' probabilistic outputs into a final prediction. The stacking classifier used passthrough=True to retain original features alongside base learner outputs and was trained using 3-fold cross-validation within the training set to optimize internal base model performance.
+   </p>
+   <br>
+
+   <h2 id="ncaa_results">Results &amp; Discussion</h2>
+
+   <p>
+    Here, we analyze and break down the results from a single fold – specifically, fold 1 – and present the averages across all folds for each statistic. Furthermore, we include backtesting results for the last 25% of games in the 2024–25 NCAA season. Additional images for your review and analysis are provided in the appendix below.
+   </p>
+   <br>
+   <p>
+    Below is the correlation matrix for the features in fold 1’s dataset before feature selection. With 152 features, the matrix is dense and can be challenging to interpret in detail. The key insight lies in the overall density and distribution of strong correlations, which is visually apparent. To enhance clarity, all correlation values below the 0.9 threshold were set to zero and displayed as white cells, simplifying the visualization and highlighting only the most significant feature relationships.
+   </p>
+
+   <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_pre-fold_1.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+   <p>
+    It is evident that most correlations cluster near the diagonal, indicating strong relationships among closely related features – such as FTA_BIAS and FTM_AVG – which is expected. However, this approach also uncovered less obvious correlations (the ones not near the diagonal), such as between PTS_BIAS_OPP and FGM_MOM_OPP, highlighting interactions that might otherwise have been overlooked.
+   </p>
+   <br>
+
+   <p>
+    After removing all redundant features, 87 remain. This reduction is reflected visually in the much sparser correlation matrix below. Notice that aside from the trivial diagonal (highlighted in red), which represents the perfect self-correlation of each feature, no correlations exceed the 0.9 threshold (indicated by blue). This confirms the effective elimination of highly correlated, redundant features.
+   </p>
+
+      <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_post-fold_1.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+
+   <p>
+    By retaining only about 57% of the original features, we significantly reduce training and prediction times while maintaining most of the model’s predictive power. Additionally, the confusion matrix for fold 1 is presented below:
+   </p>
+
+         <img src="./Methodology - Game Maker_files/fold_1_confusion_matrix(1).png" alt="Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+   <p>
+    As shown, there are 336 true positives – cases where the model correctly predicted a win (1) and the game outcome was indeed a win – along with 34 true negatives, 93 false positives, and 5 false negatives. From this confusion matrix, fold 1’s recall is 0.99, precision 0.78, F1 score 0.87, and accuracy 79.06%. While these results appear promising, they should be interpreted with caution since fold 1 was evaluated on a relatively small test set, making the metrics susceptible to volatility. This limitation motivated backtesting on a larger dataset, such as the remaining games not trained on in the 2024-25 NCAA season, to gain more knowingly stable estimates. Despite this, fold 1’s performance remains a useful indicator of training behavior and results. Across all eight folds, the average metrics were: recall at 0.86, precision 0.75, F1 score 0.80, and accuracy 72.49%, with an average optimal classification threshold of 0.4525 – below the standard threshold of 0.5.
+   </p>
+   <br>
+
+   <p>
+    As previously noted, we backtested our model using the last 25% of games in the 2024–25 NCAA season to gain a clearer understanding of its true predictive performance. The corresponding confusion matrix is shown below.
+   </p>
+
+            <img src="./Methodology - Game Maker_files/2024-25_season_confusion_matrix(1).png" alt="Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+   <p>
+    As observed, the confusion matrix shows 696 true positives, 285 true negatives, 271 false positives, and 154 false negatives. This corresponds to a recall of 0.82, precision of 0.72, F1 score of 0.77, and accuracy of 69.77% (above the baseline accuracy of around 65% from just always predicting a home team win), which aligns closely with the metrics obtained during training. While our model is not without limitations, the results highlight the fundamental uncertainty and complexity involved in predicting basketball game outcomes within the context of sports betting.
+   </p>
+   <br>
+
+   <p>
+    Graphing recall, precision, F1, and accuracy for each game day over time, we see the following.
+   </p>
+
+       <img src="./Methodology - Game Maker_files/ncaa_2024-25_deterministic_recall_trend_line.png" alt="Recall trendline graph" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+          <img src="./Methodology - Game Maker_files/ncaa_2024-25_deterministic_precision_trend_line.png" alt="Precision trendline graph" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+          <img src="./Methodology - Game Maker_files/ncaa_2024-25_deterministic_f1_trend_line.png" alt="F1 trendline graph" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+          <img src="./Methodology - Game Maker_files/ncaa_2024-25_deterministic_accuracy_trend_line.png" alt="Accuracy trendline graph" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+   <p>
+    The red trendline across all four graphs demonstrates a modest upward trajectory, indicating a gradual improvement in model performance as the season advances. Notably, the recall metric consistently outperforms the other three metrics, reflecting the successful fulfillment of our training objective to prioritize and stabilize recall.
+   </p>
+   <br>
+
+   <h1 id="simulation">Simulation Version of Models</h1>
+
+   <br>
+   <p>
+   The previous two models presented and explained were the deterministic versions of said models -- that is, there was no randomness added to the inputs to the models. To simulate input variability (in order to best capture things like a team having an off day on the court), a simulation version of each model type (NBA and NCAA) was created.
+   </p>
+   <br>
+
+   <p>
+   For each prediction needed, 1,000 synthetic games were generated by perturbing each feature in the original dataset with independent noise drawn from a standard normal distribution. The noise for each feature was scaled by 0.5 times the empirical standard deviation of that feature, with a mean of zero. This approach preserves the relative dispersion observed in the data while introducing controlled randomness.
+   </p>
+   <br>
+
+   <p>
+    To ensure logical consistency in the simulated inputs, post-processing steps were applied. If any feature values fell outside plausible bounds—such as negative values for statistics that cannot be negative (e.g., maximum points), or averages exceeding known maximums—they were corrected. Depending on the context, this was achieved either by clipping extreme values using a modified hyperbolic tangent function or by adjusting dependent features (e.g., ensuring the mean did not exceed the maximum) by introducing a small corrective delta.
+
+   </p>
+   <br>
+
+   <p>
+    Each of these 1,000 perturbed inputs was then passed through the appropriate type of model (be it NBA or NCAA), which output a binary prediction — 1 indicating a home team win, and 0 indicating a loss — for each simulated game.
+   </p>
+   <br>
+
+   <p>
+    The proportion of the synthetic games in which the model predicted a home team win (i.e., output of 1) was interpreted as the model’s confidence — expressed as a probability — in the home team winning. Consequently, the away team’s win probability was computed as one minus this value.
+   </p>
+   <br>
+
+   <p>
+    To determine the final outcome of each simulation, a decision threshold was applied. This threshold was dynamically set based on the user-specified minimum accuracy requirement. If the model’s estimated home win probability met or exceeded this threshold, the home team was predicted to win the simulated game; otherwise, the prediction favored the away team.
+   </p>
+   <br>
+
+   <p>
+    The simulation model allows users to specify a desired minimum accuracy level — 60%, 70%, 80%, 90%, or 100% — with respect to predicting home team victories. This thresholding mechanism is particularly effective for users seeking greater confidence in model-backed decisions, such as betting exclusively on home wins.
+   </p>
+   <br>
+
+   <p>
+    The accuracy is computed as the proportion of correctly predicted home wins, conditional on the model having predicted a home win. That is:
+   </p>
+   <br>
+
+   <p style="width: 50%; margin: 0 auto; text-align: center;">
+    <mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="0" style="font-size: 118.8%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D434 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D450 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D450 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D462 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45F TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44E TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D450 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D466 TEX-I"></mjx-c></mjx-mi><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mfrac space="4"><mjx-frac><mjx-num><mjx-nstrut></mjx-nstrut><mjx-mrow size="s"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D436 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45C TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45F TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45F TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D452 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D450 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D461 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D43B TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45C TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45A TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D452 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44A TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45F TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D452 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D451 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D450 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D461 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45C TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D460 TEX-I"></mjx-c></mjx-mi></mjx-mrow></mjx-num><mjx-dbox><mjx-dtable><mjx-line></mjx-line><mjx-row><mjx-den><mjx-dstrut></mjx-dstrut><mjx-mrow size="s"><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D447 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45C TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D461 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44E TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D459 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D43B TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45C TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45A TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D452 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44A TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D443 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45F TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D452 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D451 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D450 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D461 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D456 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45C TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D45B TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D460 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D440 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D44E TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D451 TEX-I"></mjx-c></mjx-mi><mjx-mi class="mjx-i"><mjx-c class="mjx-c1D452 TEX-I"></mjx-c></mjx-mi></mjx-mrow></mjx-den></mjx-row></mjx-dtable></mjx-dbox></mjx-frac></mjx-mfrac></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi><mi>c</mi><mi>c</mi><mi>u</mi><mi>r</mi><mi>a</mi><mi>c</mi><mi>y</mi><mo>=</mo><mfrac><mrow><mi>C</mi><mi>o</mi><mi>r</mi><mi>r</mi><mi>e</mi><mi>c</mi><mi>t</mi><mi>H</mi><mi>o</mi><mi>m</mi><mi>e</mi><mi>W</mi><mi>i</mi><mi>n</mi><mi>P</mi><mi>r</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>s</mi></mrow><mrow><mi>T</mi><mi>o</mi><mi>t</mi><mi>a</mi><mi>l</mi><mi>H</mi><mi>o</mi><mi>m</mi><mi>e</mi><mi>W</mi><mi>i</mi><mi>n</mi><mi>P</mi><mi>r</mi><mi>e</mi><mi>d</mi><mi>i</mi><mi>c</mi><mi>t</mi><mi>i</mi><mi>o</mi><mi>n</mi><mi>s</mi><mi>M</mi><mi>a</mi><mi>d</mi><mi>e</mi></mrow></mfrac></math></mjx-assistive-mml></mjx-container>
+   </p>
+   <br>
+
+   <p>
+    For example, if a user selects a minimum accuracy of 80%, the model will classify a game as a home win only if its predicted probability exceeds a threshold calibrated to ensure that such predictions are correct at least 80% of the time. In practice, this means that if one were to place a bet on only those games where the model predicts a home win, the expected win rate of those bets would be approximately 80%. This approach directly aligns model output with user-defined risk tolerance.
+   </p>
+   <br>
+
+   <p>
+    The threshold corresponding to each accuracy level was empirically determined by analyzing model predictions on historical NBA data. Because the model is well-calibrated, higher predicted confidence levels correlate with higher actual win rates. As a result, increasing the minimum accuracy requirement increases the threshold: the model becomes more selective, choosing to classify a game as a home win only when its internal confidence is sufficiently high.
+   </p>
+   <br>
+
+   <p>
+    For instance, a 60% minimum accuracy corresponds to a threshold of 32% predicted probability. That is, games for which the model assigns at least 32% confidence to the home team winning are, in fact, correct home win predictions at least 60% of the time. Notably, this subset accounts for approximately 80% of all games in the dataset (~1,360 of 1,700 games). Conversely, achieving 100% accuracy—where every model-predicted home win aligns with an actual home win—requires a threshold of approximately 92.9%. At that level of confidence, the model made home win predictions on a much smaller subset of games (around 1.51% of the total games), but was never wrong.
+   </p>
+   <br>
+
+   <p>
+    This threshold–accuracy tradeoff is further detailed on the How to Use page of our website. In essence, higher accuracies demands lead to stricter thresholds, reducing the number of predictions as home wins to bet on but increasing the reliability of each one. The table below summarizes the thresholds and the corresponding share of games that meet each criterion for the 2024-25 NBA season games.
+   </p>
+   <br>
+
+    <table class="styled-table">
+  <thead>
+    <tr>
+      <th>User-Requested Accuracy (URA)</th>
+     <th>Smallest Statisfactory Accuracy Above or Equal to URA</th>
+      <th>Corresponding Simulation Confidence Threshold (SCT)</th>
+     <th>Percentage of Games Above or Equal to SCT</th>
+      <th>Corresponding Number of Games (the Ones to Bet On)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>60%</td>
+      <td>60.03%</td>
+      <td>32.18%</td>
+      <td>80.58%</td>
+      <td>1,386</td>
+    </tr>
+    <tr>
+      <td>70%</td>
+      <td>70.06%</td>
+      <td>51.13%</td>
+      <td>51.45%</td>
+      <td>885</td>
+    </tr>
+    <tr>
+     <td>80%</td>
+      <td>80.00%</td>
+      <td>72.66%</td>
+      <td>26.74%</td>
+      <td>460</td>
+    </tr>
+      <tr>
+     <td>90%</td>
+      <td>90.37%</td>
+      <td>86.77%</td>
+      <td>7.85%</td>
+      <td>135</td>
+    </tr>
+      <tr>
+     <td>100%</td>
+      <td>100.00%</td>
+      <td>92.91%</td>
+      <td>1.51%</td>
+      <td>26</td>
+    </tr>
+  </tbody>
+</table>
+
+   <br>
+   <p>
+    The same table but for the last 25% of NCAA 2024-25 season games is presented below.
+   </p>
+   <br>
+
+   <table class="styled-table">
+  <thead>
+    <tr>
+      <th>User-Requested Accuracy (URA)</th>
+     <th>Smallest Statisfactory Accuracy Above or Equal to URA</th>
+      <th>Corresponding Simulation Confidence Threshold (SCT)</th>
+     <th>Percentage of Games Above or Equal to SCT</th>
+      <th>Corresponding Number of Games (the Ones to Bet On)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>60%</td>
+      <td>60.46%</td>
+      <td>0.00%</td>
+      <td>100.00%</td>
+      <td>1,406</td>
+    </tr>
+    <tr>
+      <td>70%</td>
+      <td>70.02%</td>
+      <td>25.53%</td>
+      <td>74.25%</td>
+      <td>1,044</td>
+    </tr>
+    <tr>
+     <td>80%</td>
+      <td>80.08%</td>
+      <td>38.55%</td>
+      <td>37.13%</td>
+      <td>522</td>
+    </tr>
+      <tr>
+     <td>90%</td>
+      <td>90.38%</td>
+      <td>53.20%</td>
+      <td>11.10%</td>
+      <td>156</td>
+    </tr>
+      <tr>
+     <td>100%</td>
+      <td>100.00%</td>
+      <td>78.98%</td>
+      <td>0.21%</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+   <br>
+   <p>
+    Note that the simulation confidence thresholds in the NCAA table are consistently lower than those observed in the NBA table for each specified accuracy level. This discrepancy arises from the differing base rates of home team victories: during the 2024–25 season, NCAA home teams won approximately 65% of their games, whereas NBA home teams won at a lower rate of roughly 55%. As a result, the model requires less evidence (i.e., a lower probability threshold) to classify an NCAA home team as likely to win while still meeting the same accuracy constraints.   </p>
+   <br>
+
+    <h1 id="appendix">Appendix</h1>
+   <br>
+    <p>
+     All curated images related to the machine learning models, including those previously shown, will be compiled and presented here.
+    </p>
+    <br>
+
+   <h2 id="nba_appendix">
+    NBA Model
+   </h2>
+   <p>
+    Metrics from the deterministic NBA model tested on the 2024-25 NBA basketball season.
+   </p>
+
+    <img src="./Methodology - Game Maker_files/2024-25_season_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+      
+    <img src="./Methodology - Game Maker_files/2024-25_recall_trend_line.png" alt="Recall Trendline" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+
+    <img src="./Methodology - Game Maker_files/2024-25_precision_trend_line.png" alt="Precision Trendline" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+
+    <img src="./Methodology - Game Maker_files/2024-25_f1_trend_line.png" alt="F1 Trendline" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+
+    <img src="./Methodology - Game Maker_files/2024-25_accuracy_trend_line.png" alt="Accuracy Trendline" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+    <p>
+     Metrics from the training process for each of the ten folds for the NBA model.
+    </p>
+    <br>
+
+    <h4>Fold 1</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Pre-Fold 1.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Post-Fold 1.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+
+    <img src="./Methodology - Game Maker_files/fold_1_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+    <h4>Fold 2</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Pre-Fold 2.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Post-Fold 2.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+    <img src="./Methodology - Game Maker_files/fold_2_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+    <h4>Fold 3</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Pre-Fold 3.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Post-Fold 3.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+    <img src="./Methodology - Game Maker_files/fold_3_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+    <h4>Fold 4</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Pre-Fold 4.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Post-Fold 4.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+    <img src="./Methodology - Game Maker_files/fold_4_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+    <h4>Fold 5</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Pre-Fold 5.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Post-Fold 5.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+    <img src="./Methodology - Game Maker_files/fold_5_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+    <h4>Fold 6</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Pre-Fold 6.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Post-Fold 6.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+    <img src="./Methodology - Game Maker_files/fold_6_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+    <h4>Fold 7</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Pre-Fold 7.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Post-Fold 7.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+    <img src="./Methodology - Game Maker_files/fold_7_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+    <h4>Fold 8</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Pre-Fold 8.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Post-Fold 8.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+    <img src="./Methodology - Game Maker_files/fold_8_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+    <h4>Fold 9</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Pre-Fold 9.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Post-Fold 9.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+    <img src="./Methodology - Game Maker_files/fold_9_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+    <h4>Fold 10</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Pre-Fold 10.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+    <img src="./Methodology - Game Maker_files/Feature Correlation Matrix (Threshold Magnitude of 0.7) for Post-Fold 10.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+    <img src="./Methodology - Game Maker_files/fold_10_confusion_matrix.png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+   <br>
+   <h2 id="ncaa_appendix">
+    NCAA Model
+   </h2>
+   <p>
+    Metrics from the deterministic NCAA model tested on the last 25% of games of the 2024-25 NCAA basketball season.
+   </p>
+   <br>
+
+       <img src="./Methodology - Game Maker_files/2024-25_season_confusion_matrix(1).png" alt="Feature Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+    <img src="./Methodology - Game Maker_files/ncaa_2024-25_deterministic_recall_trend_line.png" alt="Recall Trendline" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+
+    <img src="./Methodology - Game Maker_files/ncaa_2024-25_deterministic_precision_trend_line.png" alt="Precision Trendline" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+
+    <img src="./Methodology - Game Maker_files/ncaa_2024-25_deterministic_f1_trend_line.png" alt="F1 Trendline" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+
+    <img src="./Methodology - Game Maker_files/ncaa_2024-25_deterministic_accuracy_trend_line.png" alt="Accuracy Trendline" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+    <p>
+     Metrics from the training process for each of the eight folds for the NCAA model.
+    </p>
+    <br>
+
+   <h4>Fold 1</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_pre-fold_1.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_post-fold_1.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+
+    <img src="./Methodology - Game Maker_files/fold_1_confusion_matrix(1).png" alt="Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+     <h4>Fold 2</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_pre-fold_2.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_post-fold_2.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+
+    <img src="./Methodology - Game Maker_files/fold_2_confusion_matrix(1).png" alt="Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+   <h4>Fold 3</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_pre-fold_3.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_post-fold_3.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+
+    <img src="./Methodology - Game Maker_files/fold_3_confusion_matrix(1).png" alt="Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+   <h4>Fold 4</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_pre-fold_4.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_post-fold_4.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+
+    <img src="./Methodology - Game Maker_files/fold_4_confusion_matrix(1).png" alt="Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+   <h4>Fold 5</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_pre-fold_5.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_post-fold_5.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+
+    <img src="./Methodology - Game Maker_files/fold_5_confusion_matrix(1).png" alt="Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+   <h4>Fold 6</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_pre-fold_6.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_post-fold_6.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+
+    <img src="./Methodology - Game Maker_files/fold_6_confusion_matrix(1).png" alt="Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+   <h4>Fold 7</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_pre-fold_7.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_post-fold_7.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+
+    <img src="./Methodology - Game Maker_files/fold_7_confusion_matrix(1).png" alt="Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+   <h4>Fold 8</h4>
+    <br>
+    <p>Correlation matrix before feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_pre-fold_8.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Correlation matrix after feature selection/reduction:</p>
+
+    <img src="./Methodology - Game Maker_files/feature_correlation_matrix_(threshold_magnitude_of_0.9)_for_post-fold_8.png" alt="Feature Correlation Matrix" style="width: auto; height: 500px; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+    <br>
+    <p>Confusion matrix:</p>
+
+    <img src="./Methodology - Game Maker_files/fold_8_confusion_matrix(1).png" alt="Confusion Matrix" style="width: auto; height: auto; object-fit: cover; border-radius: 8px; display: block; margin: 0 auto;">
+
+  </div>
+
+  </main>
+
+<div id="hl-aria-live-message-container" aria-live="polite" class="visually-hidden"></div><div id="hl-aria-live-alert-container" role="alert" aria-live="assertive" class="visually-hidden"></div></body></html>

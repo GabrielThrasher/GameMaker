@@ -1,0 +1,687 @@
+{% extends "layout.html" %}
+{% block title %}Prediction - Game Maker{% endblock %}
+
+{% block content %}
+<div class="main-content" style="font-family: 'Montserrat', sans-serif; display: flex; flex-direction: row; gap: 2em; justify-content: center; margin-top: 2em; margin-bottom: 6em;">
+
+
+  <!-- Input section -->
+<div style="display: flex; flex-direction: column; gap: 1em; justify-items: center;">
+  <label for="start-date" style="font-weight: 600; text-align: center;">Start Date</label>
+  <input 
+    type="date" 
+    id="start-date"
+    style="padding: 10px; font-size: 1em; border: 1px solid #ccc; border-radius: 4px;"
+    required
+  >
+
+  <label for="end-date" style="font-weight: 600; text-align: center;">End Date (Maximum of 5 days)</label>
+  <input 
+    type="date" 
+    id="end-date"
+    style="padding: 10px; font-size: 1em; border: 1px solid #ccc; border-radius: 4px;"
+    required
+  >
+  <label for="league-select" style="font-weight: 600;align-content: center; text-align: center;">Select League</label>
+  <select name="league-select" id="league-select" style="
+    padding: 10px 16px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  ">
+    <option value="NBA">NBA</option>
+    <option value="NCAAMB_D1">NCAA Men's</option>
+  </select>
+  <label for="model-select" style="font-weight: 600;align-content: center; text-align: center;">Select Prediction Method</label>
+  <select name="model-select" id="model-select" style="
+    padding: 10px 16px;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+  ">
+    <option value="deterministic">Base model</option>
+    <option value="simulation">Simulation</option>
+  </select>
+
+  <h4 id="accuracy-value" style="text-align: center; align-content: center; display: none;">Accuracy Threshold: 60%</h4>
+  <input
+    type="range"
+    id="accuracy-slider"
+    min="60"
+    max="100"
+    step="10"
+    list="tickmarks"
+    value="60"
+    disabled>
+  
+  <div style="display: flex; flex-direction: row; gap: 1em; border-bottom: solid 1px black; padding-bottom: 1em;">
+    <button type="button" id="retrieve-button" onclick="retrieveGamesRange()" style="
+      padding: 10px 16px;
+      background-color: #1D428A;
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    ">
+      RETRIEVE
+    </button>
+
+    <button type="button" id="predict-button" onclick="predictGames()" style="
+      padding: 10px 16px;
+      background-color: #1D428A;
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    ">
+      PREDICT
+    </button>
+  </div>
+  <label for="parlay-drop" style="font-weight: 600 ;align-content: center; text-align: center;">Create Parlay (Maximum of 4 Games)</label>
+  <div name="parlay" id="parlay-drop" style="min-height: 45px; height: auto; border: 1px solid #ccc; border-radius: 4px; align-content: center;">
+    <p style="text-align: center; justify-content: center; display: flex;">Drop games here</p>
+  </div>
+  <h4 id="parlay-prob" style="display: none; text-align: center; justify-content: center;"></h4>
+  <div style="display: flex; flex-direction: row; gap: 1em; justify-items: center;">
+    <button type="button" onclick="clearParlay()" style="
+      padding: 10px 16px;
+      background-color: #1D428A;
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    ">
+      CLEAR
+    </button>
+    <button type="button" id="parlay-button" onclick="simulateParlay()" style="
+      padding: 10px 16px;
+      background-color: #1D428A;
+      color: white;
+      font-weight: 600;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    ">
+      SIMULATE
+    </button>
+  </div>
+
+</div>
+
+
+
+<!-- Game output goes here -->
+<div style="display: flex; flex-direction: column; gap: .5em; justify-items: center; min-width: 60%;">
+  <h3 id="header-div" style="align-content: center; border-bottom: solid 1px; min-width: 60%; text-align: center;">0 Games Shown</h3>
+  <div id="games-table-container" style="margin-top:30px; height: 400px; overflow-y: auto; resize: vertical;"><p style="text-align: center;">Select Games...</p></div>
+  <div id="predictions-table-container" style="margin-top:30px; max-height: 400px; overflow-y: auto;"></div>
+  <div id="stats-table-container" style="margin-top:30px; max-height: 400px; overflow-y: auto;"></div>
+</div>
+</div>
+
+<script>
+
+  function updateSelectedCounter(checked) {
+    const headerDiv = document.getElementById('header-div');
+    const header = headerDiv.textContent.split('-');
+    const selected_games_string = header[1].trim().split(' ');
+    let current_games = Number(selected_games_string[0])
+    let games = checked ? ++current_games : --current_games;
+    
+    const model = document.getElementById('model-select').value;
+    
+    if (games == 0) {
+      let time = "N/A";
+      headerDiv.textContent = `${header[0]} - ${games} Games Selected - Est. Time ${time} Minute`;
+      return;
+    } else if (model == 'simulation') {
+      time = Math.round(games * 6 / 60);
+    } else {
+      time = 0;
+    }
+
+    if (time == 0) {
+      headerDiv.textContent = `${header[0]} - ${games} Games Selected - Est. Time <1 Minute`;
+    } else if (time < 2) {
+      headerDiv.textContent = `${header[0]} - ${games} Games Selected - Est. Time ${time} Minute`;
+    } else {
+      headerDiv.textContent = `${header[0]} - ${games} Games Selected - Est. Time ${time} Minutes`;
+    }
+
+  }
+
+  function renderGameTable(data, prediction='None') {
+    let total_games = 0;
+    const container = document.getElementById('games-table-container')
+    container.innerHTML = '';
+    for (const [date, games] of Object.entries(data.games)) {
+      const heading = document.createElement('h3');
+      heading.textContent = `Games on ${date}`;
+      heading.style.cssText = "margin-top: 20px; font-weight: 600; text-align: center;";
+      container.appendChild(heading);
+
+
+      const table = document.createElement('table');
+      table.id = `table-${date}`
+      table.className = 'game-table'
+      table.style.cssText = "width: 100%; border-collapse: collapse; font-family: 'Montserrat', sans-serif; box-shadow: 0 4px 8px rgba(0,0,0,0.1); margin-bottom: 20px;";
+
+
+      const thead = document.createElement('thead');
+      let newHTML = `
+        <tr style="background-color: #1D428A; color: white;">
+          <th style="padding: 12px; border: 1px solid #ddd;"><input type="checkbox" id="checkAll${date}"></th>
+          <th style="padding: 12px; border: 1px solid #ddd;">Home</th>
+          <th style="padding: 12px; border: 1px solid #ddd;">Home W–L</th>
+          <th style="padding: 12px; border: 1px solid #ddd;">Away</th>
+          <th style="padding: 12px; border: 1px solid #ddd;">Away W–L</th>
+      `;
+      if (prediction != 'None') {
+        newHTML += `
+            <th style="padding: 12px; border: 1px solid #ddd;">Prediction</th>
+            <th style="padding: 12px; border: 1px solid #ddd;">Winner</th>
+        `;
+      }
+      if (prediction == 'simulation') {
+        newHTML += `
+            <th style="padding: 12px; border: 1px solid #ddd;">Confidence %</th>
+            <th style="padding: 12px; border: 1px solid #ddd;">Confidence Interval</th>
+        `;
+      }
+
+      newHTML += `</tr>`;
+
+
+      thead.innerHTML = newHTML;
+      table.appendChild(thead);
+
+      const tbody = document.createElement('tbody');
+
+      games.forEach(game => {
+        const row = document.createElement('tr');
+        row.id = game.id
+        row.style.backgroundColor = '#f9f9f9';
+        row.className = 'game-row';
+        row.setAttribute('draggable', true);
+
+        newHTML = `
+          <td style="padding: 12px; border: 1px solid #ddd;"><input type="checkbox" class="row-checkbox${date}"></td>
+          <td id="${game.home_id}" style="padding: 12px; border: 1px solid #ddd;">${game.home}</td>
+          <td style="padding: 12px; border: 1px solid #ddd;">${game.home_record}</td>
+          <td id="${game.away_id}" style="padding: 12px; border: 1px solid #ddd;">${game.away}</td>
+          <td style="padding: 12px; border: 1px solid #ddd;">${game.away_record}</td>
+        `;
+        if (prediction != "None") {
+          let background_color = game.prediction === game.winner? '#00FF52' : '#fc0511';
+          if (game.prediction == "Undefined") {
+            background_color = '#FFFF00';
+          }
+          newHTML += `
+            <td style="padding: 12px; border: 1px solid #ddd; background-color: ${background_color};">${game.prediction}</td>
+            <td style="padding: 12px; border: 1px solid #ddd; background-color: ${background_color};">${game.winner}</td>
+          `;
+        }
+        if (prediction == 'simulation') {
+          newHTML += `
+                      <td style="padding: 12px; border: 1px solid #ddd;">${game.confidence}</td>
+                      <td style="padding: 12px; border: 1px solid #ddd;">${game.confidence_interval[0]}% - ${game.confidence_interval[1]}%</td>
+          `;
+        }
+
+        row.innerHTML = newHTML;
+        tbody.appendChild(row);
+
+        row.addEventListener('dragstart', (e) => {
+          e.dataTransfer.setData('text/plain', row.id); // transfer the row ID
+          e.dataTransfer.effectAllowed = 'move';
+        });
+
+        total_games++;
+      });
+      
+
+      table.appendChild(tbody);
+      container.append(table);
+      
+
+      document.getElementById(`checkAll${date}`).addEventListener('change', function () {
+        const checkboxes = document.querySelectorAll(`.row-checkbox${date}`);
+        checkboxes.forEach(cb => {
+          console.log(this.checked, cb.checked);
+          if (cb.checked != this.checked) {
+            cb.checked = this.checked;
+            cb.dispatchEvent(new Event('change'));
+          }            
+        });
+        
+      });
+
+      document.querySelectorAll(`.row-checkbox${date}`).forEach(box => {
+        box.addEventListener('change', () => updateSelectedCounter(box.checked));
+      });
+
+    }
+
+    const headerDiv = document.getElementById("header-div");
+    headerDiv.textContent = `${total_games} Games Shown - 0 Games Selected - Est. Time N/A`;
+  }
+
+  function getGameTableInfo() {
+    const gameTables = document.querySelectorAll('.game-table');
+    tableData = {};
+    selectedGames = {};
+    selectedTeams = {}
+    gameTables.forEach(table => {
+      const date = table.id.replace("table-", "");
+      const checkedBoxes = document.querySelectorAll(`.row-checkbox${date}:checked`);
+      if (checkedBoxes.length > 0) {
+        selectedGames[date] = [];
+        selectedTeams[date] = [];
+        tableData[date] = [];
+      }
+      
+      checkedBoxes.forEach(box => {
+        const row = box.closest('tr');
+        const cells = row.querySelectorAll('td');
+
+        // Push the home and away team IDs
+        selectedGames[date].push(row.id);
+        selectedTeams[date].push(cells[1].id);
+        selectedTeams[date].push(cells[3].id);
+        
+        tableData[date].push({
+          'home': row.cells[1].textContent,
+          'home_record': row.cells[2].textContent,
+          'away': row.cells[3].textContent,
+          'away_record': row.cells[4].textContent,
+          'home_id': row.cells[1].id,
+          'away_id': row.cells[3].id,
+          'id': row.id
+        });
+      })
+    });
+    return [tableData, selectedTeams, selectedGames];
+  }
+
+  function retrieveGamesRange() {
+    const startDateStr = document.getElementById('start-date').value;
+    const endDateStr = document.getElementById('end-date').value;
+    const league = document.getElementById("league-select").value;
+    const retrieveButton = document.getElementById("retrieve-button")
+    retrieveButton.textContent = 'Loading...'
+
+    if (!startDateStr || !endDateStr) {
+      retrieveButton.textContent = 'RETRIEVE';
+      alert('Please select both start and end dates.');
+      return;
+    }
+
+    const startDate = new Date(startDateStr);
+    const endDate = new Date(endDateStr);
+
+    const diffDays = (endDate - startDate) / (1000 * 3600 * 24) + 1;
+    if (endDate < startDate) {
+      retrieveButton.textContent = 'RETRIEVE';
+      alert('End date cannot be before start date.');
+      return;
+    }
+    if (diffDays > 5) {
+      retrieveButton.textContent = 'RETRIEVE';
+      alert('Date range cannot be more than 5 days.');
+      return;
+    }
+
+    const dates = [];
+    for (let i = 0; i < diffDays; i++) {
+      const d = new Date(startDate);
+      d.setDate(startDate.getDate() + i);
+      dates.push(d.toISOString().slice(0, 10));
+    }
+
+    fetch('/get_games_range', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ selected_dates: dates, selected_league: league})
+    })
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('games-table-container');
+      if (!data.games || Object.keys(data.games).length === 0) {
+        container.innerHTML = '<p>No games found for this date range.</p>';
+        retrieveButton.textContent = "RETRIEVE"
+        return;
+      }
+
+      
+      renderGameTable(data);
+      retrieveButton.textContent = 'RETRIEVE';
+      const confusionMatrix = document.getElementById("predictions-table-container");
+      confusionMatrix.innerHTML = '';
+
+      const statsTable = document.getElementById('stats-table-container');
+      statsTable.innerHTML = '';
+
+      clearParlay();
+    })
+    .catch(err => {
+      retrieveButton.textContent = 'RETRIEVE';
+      console.error(err);
+      alert('Failed to retrieve games.');
+    });
+  }
+
+
+  function predictGames() {
+    const startDateStr = document.getElementById('start-date').value;
+    const endDateStr = document.getElementById('end-date').value;
+    const league = document.getElementById("league-select").value;
+    const model = document.getElementById("model-select").value;
+    const predButton = document.getElementById("predict-button");
+    predButton.textContent = "Loading..."
+
+    // get date range from selected date
+    const startDate = new Date(startDateStr);
+    const endDate = new Date(endDateStr);
+    const diffDays = (endDate - startDate) / (1000 * 3600 * 24) + 1;
+
+    if (endDate < startDate) {
+      predButton.textContent = "PREDICT"
+      alert('End date cannot be before start date.');
+      return;
+    }
+
+    if (diffDays > 5) {
+      predButton.textContent = "PREDICT"
+      alert('Date range cannot be more than 5 days.');
+      return;
+    }
+
+    const dates = [];
+    for (let i = 0; i < diffDays; i++) {
+      const d = new Date(startDate);
+      d.setDate(startDate.getDate() + i);
+      dates.push(d.toISOString().slice(0, 10));
+    }
+
+    let [tableData, selectedTeams, selectedGames] = getGameTableInfo();
+    if (Object.keys(selectedTeams).length == 0) {
+      predButton.textContent = "PREDICT";
+      alert("No games selected");
+      return;
+    }
+    
+    const accuracy = document.getElementById('accuracy-slider').value;
+    console.log(accuracy);
+
+    fetch('/get_predictions_range', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ selected_games: selectedGames, selected_league: league, selected_model: model, accuracy_threshold: accuracy, selected_teams: selectedTeams })
+    })
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('games-table-container');
+      if (!data.games || Object.keys(data.games).length === 0) {
+        container.innerHTML = '<p>No predictions available.</p>';
+        predButton.textContent = "PREDICT";
+        return;
+      }
+      
+      for (const [date, games] of Object.entries(data.games)) {
+        let i = 0;
+        games.forEach( game => {
+          tableData[date][i]['prediction'] = game[0];
+          tableData[date][i]['winner'] = game[1];
+          if (model == 'simulation') {
+            tableData[date][i]['confidence'] = game[2];
+            tableData[date][i]['confidence_interval'] = game[3];
+            console.log(game[3]);
+          }
+          i++;
+        });
+      }
+
+      const renderData = {'games': tableData}
+      renderGameTable(renderData, model);
+
+      predButton.textContent = "PREDICT";
+      const confusionMatrix = document.getElementById('predictions-table-container');
+      confusionMatrix.innerHTML = `
+        <table style="
+          width: 100%;
+          border-collapse: collapse;
+          font-family: 'Montserrat', sans-serif;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        "
+          id="games-table"
+        >
+          <caption style="font-weight: 600; font-size= 1em"> Confusion Matrix </caption>
+          <thead>
+            <tr style="background-color: #1D428A; color: white;">
+              <td style="background-color: #f9f9f9;"></td>
+              <th style="padding: 12px; border: 1px solid #ddd;">Predicted Home Win</th>
+              <th style="padding: 12px; border: 1px solid #ddd;">Predicted Home Loss</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background-color: #1D428A;">
+              <th style="padding: 12px; border: 1px solid #ddd;  color: white;">Actual Home Win</th>
+              <td style="padding: 12px; border: 1px solid #ddd; background-color: #f9f9f9;">${data.confusion_matrix[0][0]}</td>
+              <td style="padding: 12px; border: 1px solid #ddd; background-color: #f9f9f9;">${data.confusion_matrix[0][1]}</td>
+            </tr>
+            <tr style="background-color: #1D428A;">
+              <th style="padding: 12px; border: 1px solid #ddd;  color: white;">Actual Home Loss</th>
+              <td style="padding: 12px; border: 1px solid #ddd; background-color: #f9f9f9;">${data.confusion_matrix[1][0]}</td>
+              <td style="padding: 12px; border: 1px solid #ddd; background-color: #f9f9f9;">${data.confusion_matrix[1][1]}</td>
+            </tr>
+          </tbody>
+      `;
+      
+      const statsTable = document.getElementById('stats-table-container');
+      statsTable.innerHTML = `
+        <table style="
+          width: 100%;
+          border-collapse: collapse;
+          font-family: 'Montserrat', sans-serif;
+          box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        "
+          id="games-table"
+        >
+          <caption style="font-weight: 600; font-size= 1em"> Prediction Stats </caption>
+          <thead>
+            <tr style="background-color: #1D428A; color: white;">
+              <th style="padding: 12px; border: 1px solid #ddd;">Accuracy %</th>
+              <th style="padding: 12px; border: 1px solid #ddd;">Recall %</th>
+              <th style="padding: 12px; border: 1px solid #ddd;">Precision %</th>
+              <th style="padding: 12px; border: 1px solid #ddd;">F1</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr style="background-color: #f9f9f9;">
+              <td style="padding: 12px; border: 1px solid #ddd;">${data.stats.final_acc}%</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">${data.stats.final_recall}%</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">${data.stats.final_precision}%</td>
+              <td style="padding: 12px; border: 1px solid #ddd;">${data.stats.final_f1}</td>
+            </tr>
+          </tbody>
+      `;
+      
+
+      
+    })
+    .catch(err => {
+      predButton.textContent = "PREDICT"
+      console.error(err);
+      alert('Failed to retrieve predictions.');
+    });
+  }
+
+  function initializeParlayTable(date) {
+    const parlayDiv = document.getElementById("parlay-drop");
+    parlayDiv.style.alignContent = 'start';
+    parlayDiv.innerHTML = `
+      <table name="parlay-table" id="parlay-table" data-date="${date}" style="width: 100%;">
+        <thead>
+          <tr style="min-width: 550px;"> 
+            <th style="padding: 12px; border: 1px solid #ddd; background-color: #1D428A; color: white;">Home</th>      
+            <th style="padding: 12px; border: 1px solid #ddd; background-color: #1D428A; color: white;">Away</th>
+          </tr>
+        <thead>
+      <table>
+    `;
+  }
+
+  function clearParlay() {
+    const parlayDiv = document.getElementById('parlay-drop');
+    parlayDiv.style.alignContent = 'center';
+    parlayDiv.innerHTML = `<p style="text-align: center; justify-content: center; display: flex;">Drop games here</p>`;
+    const caption = document.getElementById('parlay-prob');
+    caption.style.display = 'none';
+  }
+
+  function simulateParlay() {
+    const parlayTable = document.getElementById('parlay-table');
+    if (parlayTable == null) {
+      alert("Please add games to simulate parlay");
+      return;
+    }
+
+    const date = parlayTable.dataset.date;
+    const parlayRows = document.querySelectorAll('.parlay-table-row');
+    const teams = [];
+    const games = [];
+
+    parlayRows.forEach(row => {
+      games.push(row.dataset.gameId);
+      teams.push(row.cells[0].dataset.teamId, row.cells[1].dataset.teamId);
+    })
+    
+    const league = document.getElementById('league-select').value;
+    const button = document.getElementById('parlay-button');
+    button.textContent = "Loading..."
+
+    fetch('/get_parlay', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ selected_date: date, selected_games: games, selected_league: league, selected_teams: teams})
+    })
+    .then(res => res.json())
+    .then(data => {
+    
+      for (let i = 1; i < parlayTable.rows.length; i++) {
+        if (data.games[i-1] == "Undefined") { 
+          parlayTable.rows[i].cells[0].style.backgroundColor = '#FFFF00';
+          parlayTable.rows[i].cells[1].style.backgroundColor = '#FFFF00';
+        } else if (data.games[i-1] == "Home") {
+          parlayTable.rows[i].cells[0].style.backgroundColor = '#00FF52';
+        } else {
+          parlayTable.rows[i].cells[1].style.backgroundColor = '#00FF52';
+        }
+      }
+
+      const caption = document.getElementById('parlay-prob');
+      caption.textContent = `Simulated Likelihood: ${data.probability}%`;
+      caption.style.display = 'flex';
+      
+
+      button.textContent = "SIMULATE";
+    })
+    .catch(err => {
+      button.textContent = "SIMULATE";
+      console.error(err);
+      alert('Failed to simulate parlay.');
+    });
+  }
+
+  const dropZone = document.getElementById('parlay-drop');
+
+  dropZone.addEventListener('dragover', (e) => {
+    e.preventDefault(); // Required to allow drop
+    e.dataTransfer.dropEffect = 'move';
+  });
+
+  dropZone.addEventListener('drop', (e) => {
+    e.preventDefault();
+    const rowId = e.dataTransfer.getData('text/plain');
+    const draggedRow = document.getElementById(rowId);
+    const date = draggedRow.parentElement.parentElement.id.replace("table-", "");
+    if (draggedRow) {
+      if (document.getElementById('parlay-table') == null) {
+        initializeParlayTable(date);
+      }
+
+      const parlayTable = document.getElementById('parlay-table');
+
+      if (parlayTable.dataset.date != date) {
+        alert("Cannot have games from different dates");
+        return
+      }
+
+      if (parlayTable.rows.length > 4) {
+        alert("Cannot have more than 4 games");
+        return
+      }
+
+      const tableRows = document.querySelectorAll('.parlay-table-row');
+      for (let i = 0; i < tableRows.length; i++) {
+        if (tableRows[i].dataset.gameId == draggedRow.id) {
+          alert("Cannot have duplicate games");
+          return
+        }
+      }
+
+      const row = document.createElement('tr');
+      row.className = 'parlay-table-row';
+      row.style.backgroundColor = '#f9f9f9';
+      row.dataset.gameId = draggedRow.id;
+      row.innerHTML = `
+          <td style="padding: 12px; border: 1px solid #ddd;" data-team-id="${draggedRow.cells[1].id}">${draggedRow.cells[1].textContent}</td>
+          <td style="padding: 12px; border: 1px solid #ddd;" data-team-id="${draggedRow.cells[3].id}">${draggedRow.cells[3].textContent}</td>
+        `;
+
+      parlayTable.appendChild(row);
+    }
+
+   
+    
+  });
+
+  const modelSelect = document.getElementById('model-select');
+
+  modelSelect.addEventListener('change', (e) => {
+    const acc = document.getElementById('accuracy-value');
+    const slider = document.getElementById('accuracy-slider');
+
+    if (event.target.value == 'deterministic') {
+      slider.disabled = true;
+      acc.style.display = 'none';
+    } else {
+      slider.disabled = false;
+      acc.style.display = 'flex';
+    }
+  });
+
+  const slider = document.getElementById('accuracy-slider');
+
+  slider.addEventListener('input', () => {
+    const acc = document.getElementById('accuracy-value');
+    acc.textContent = `Accuracy Threshold: ${slider.value}%`;
+  });
+
+</script>
+{% endblock %}
+
