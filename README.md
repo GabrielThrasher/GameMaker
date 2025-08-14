@@ -2,7 +2,7 @@
 
 --------------------------------------------------------------------------------
 Note: to view the original version controlled project visit the fixed_branch branch at the repo https://github.com/keirannnelson/GameMaker/tree/fixed_branch.
-To view a static version of the Methodology page without running any code, open your file explorer, navigate to the methodology_static_page folder in the project’s root directory, and double-click the Methodology – Game Maker.html file to open it in your browser.
+To view a static version of the Methodology page without running any code, download the repo, open your file explorer, navigate to the methodology_static_page folder in the project’s root directory, and double-click the Methodology – Game Maker.html file to open it in your browser.
 --------------------------------------------------------------------------------
 
 GameMaker bridges the gap between complex basketball data and everyday fans by offering an interactive, intelligent prediction platform powered by machine learning. It takes the guesswork out of sports analytics by utilizing machine learning to make future predictions from past games.
